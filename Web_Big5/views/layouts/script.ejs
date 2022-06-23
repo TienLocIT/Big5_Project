@@ -1,0 +1,13 @@
+<script>
+    const btnNavBars=[...document.querySelectorAll(".btnNavBar")];
+    const urlParams=window.location.pathname;
+    if(urlParams=="/admin"){
+        btnNavBars[0].classList.add("active");
+    }   
+    for(var i=1;i<btnNavBars.length;i++){
+        if(btnNavBars[i].id==urlParams.replace("/admin/","")){
+            btnNavBars[i].classList.add("active");
+            break;
+        }
+    }
+</script>

@@ -1,0 +1,91 @@
+/*--Main left popup user--*/
+.tableFixHeadUser .tableFixHead__content {
+    display: grid;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .tableFixHeadUser .tableFixHead__content__left ul li {
+    display: inline;
+    padding: 0.4rem 1rem 0.4rem;
+  }
+  .tableFixHeadUser .tableFixHead__content__left form {
+    height: 31rem;
+    background: #efefef;
+    margin: 1.2rem;
+    overflow: auto;
+    border-radius: 0.6rem;
+    box-shadow: 5px 5px #cecccc;
+    width: 90%;
+  }
+  .tableFixHeadUser .tableFixHead__content__left form h3 {
+    padding: 0.8rem;
+  }
+  .tableFixHeadUser .tableFixHead__content__left .content__question {
+    margin: 0.8rem;
+  }
+  .tableFixHeadUser .tableFixHead__content__left .content__question h4 {
+    margin-bottom: 1.4rem;
+  }
+  .tableFixHeadUser .tableFixHead__content__left .content__question li {
+    margin-left: 2rem;
+    background: #cacecd;
+    border-radius: 0.2rem;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    font-weight: bold;
+  }
+  .tableFixHeadUser
+    .tableFixHead__content__left
+    .content__question
+    .content__question--High {
+    color: #f90716;
+  }
+  .tableFixHeadUser
+    .tableFixHead__content__left
+    .content__question
+    .content__question--Medium {
+    color: #cbb127;
+  }
+  .tableFixHeadUser
+    .tableFixHead__content__left
+    .content__question
+    .content__question--Low {
+    color: #289a73;
+  }
+  /* .tableFixHeadUser .tableFixHead__content .tableFixHead__content_right {
+    position: relative;
+  }
+  .tableFixHeadUser .tableFixHead__content .tableFixHead__content_right h2 {
+    color: #17d7a0;
+  } */
+  /* .tableFixHeadUser .tableFixHead__content .tableFixHead__content_right div {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 35%;
+  } */
+
+.tableFixHeadUser .tableFixHead__content__left .headerInfo{
+  margin:2rem 0 0 2rem;
+}
+
+.tableFixHeadUser .tableFixHead__content__left .headerInfo div{
+  font-size: 1.2rem;
+  margin-right: 0.2rem;
+}
+
+.tableFixHeadUser .tableFixHead__content__left .headerInfo div span{
+  font-weight: bold;
+}
+
+.button--userInfo__back button{
+  margin-top: 1.3rem;
+padding: 0.4rem 0.8rem 0.4rem;
+cursor: pointer;
+/* margin-left: 25%; */
+color: #fff;
+background: #2d91da;
+border-radius: 0.4rem;
+}
+

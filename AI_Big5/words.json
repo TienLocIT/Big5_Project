@@ -1,0 +1,39 @@
+{
+    "question_word": {
+        "singular": [
+            "Does",
+            "Is",
+            "Has",
+            "Doesn't",
+            "Isn't"
+        ],
+        "plural": [
+            "Do",
+            "Are",
+            "Have",
+            "Aren't"
+        ],
+        "other": [
+            "Would",
+            "Would you like",
+            "Looks like",
+            "Can"
+        ]
+    },
+    "verb_words": [
+        "love",
+        "like",
+        "understand",
+        "hate",
+        "want",
+        "prefer",
+        "need",
+        "mind",
+        "care",
+        "know",
+        "think",
+        "believe",
+        "guess",
+        "mean"
+    ]
+}

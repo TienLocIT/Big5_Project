@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/image/logo_green.png">
+  <link rel="stylesheet" href="/css/styleOther.css" />
+  <title>Questions</title>
+  <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css" />
+  <!-- Font CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+</head>
+
+<body>
+  <div class="container container__question">
+    <!--Sidebar-->
+    <!-- <aside class="sidebar">
+        <div class="sidebar__top">
+          <img class="logo" src="./assets/images/logo_green.png" alt="" />
+        </div>
+        <div class="sidebar__items">
+          <a href="#">
+            <span class="material-icons"> leaderboard </span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons"> person_outline </span>
+            <h3>User</h3>
+          </a>
+          <a href="#" class="active">
+            <span class="material-icons"> auto_stories </span>
+            <h3>Question</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons"> crop_portrait </span>
+            <h3>Trait</h3>
+          </a>
+          <a href="#" class="">
+            <span class="material-icons"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside> -->
+    <!--Left of Main-->
+    <%- include("../layouts/sidebar") %>
+      <main class="main__left">
+        <div>
+          <h1>Questions</h1>
+          <div class="main__data main__data-question">
+            <div class="thead">
+              <div>
+                <!-- <select id="trait__Option" style="width: 100%;text-align: center;">
+                  <option selected="selected" value="All">All</option>
+                  <option value="Openness">Openness</option>
+                  <option value="Conciencetious">Conciencetious</option>
+                  <option value="Extraversion">Extraversion</option>
+                  <option value="Agreeable">Agreeable</option>
+                  <option value="Neuroticism">Neuroticism</option>
+                </select> -->
+                <input type="text" placeholder="Search Big5 Env Indicator..." id="search_big5_env_indicator"
+                  style="margin-left: 60%;padding: 2% 4%;">
+
+              </div>
+              <div>Question </div>
+              <div>Indicator</div>
+              <div>Openness</div>
+              <div>Conscientious</div>
+              <div>Extraversion</div>
+              <div>Agreeable</div>
+              <div>Neuroticism</div>
+            </div>
+            <div class="tbody">
+              <div id="loadingio"></div>
+            </div>
+          </div>
+          <div class="button-send">
+            <button id="send__question">Send</button>
+            <button id="choose__big5envindicator" style="margin-left: 2%;">Choose Big5envIndicator</button>
+          </div>
+          <!-- <div class="button_choose_big5envindicator">
+        
+      </div> -->
+
+          <h2 style="margin-top: 0.8remrem;margin-bottom: 0.8rem;">Input questions</h2>
+          <div class="main__question">
+            <div class="main__questions">
+              <div class="main__question__input">
+                <label for="input__big5_env_indicator" style="font-weight: bold;">
+                  Big5 Env Indicator:
+                  <span id="input__big5_env_indicator" style="width: 35%;padding: 0.5rem;" type="text"></span>
+                </label>
+                <table style="margin-top: 15px;">
+                  <thead>
+                    <tr>
+                      <th>Openness</th>
+                      <th>Conciencetious</th>
+                      <th>Extraversion</th>
+                      <th>Agreeable</th>
+                      <th>Neuroticism</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <select id="levelOpenness" class="level">
+                          <option value="1">High</option>
+                          <option value="2" selected>Medium</option>
+                          <option value="3">Low</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select id="levelConciencetious" class="level">
+                          <option value="1">High</option>
+                          <option value="2" selected>Medium</option>
+                          <option value="3">Low</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select id="levelExtraversion" class="level">
+                          <option value="1">High</option>
+                          <option value="2" selected>Medium</option>
+                          <option value="3">Low</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select id="levelAgreeable" class="level">
+                          <option value="1">High</option>
+                          <option value="2" selected>Medium</option>
+                          <option value="3">Low</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select id="levelNeuroticism" class="level">
+                          <option value="1">High</option>
+                          <option value="2" selected>Medium</option>
+                          <option value="3">Low</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <button id="user-modal__button-suggest--question">Suggest Question</button>
+                  <input type="text" placeholder="Input question here..." id="input__question" />
+                </div>
+
+              </div>
+              <div class="main__question--input__point" style="">
+                <div>
+                  <span> High =</span>
+                  <input type="number" min="1" max="100" value="20" name="high" id="high__point" />
+                </div>
+                <div>
+                  <span> Medium =</span>
+                  <input type="number" min="1" max="100" value="15" name="medium" id="medium__point" />
+                </div>
+                <div>
+                  <span> Low =</span>
+                  <input type="number" min="1" max="100" value="10" name="low" id="low__point" />
+                </div>
+                <button id="save__question">Save</button>
+              </div>
+              <div id="loadingioquestion">
+
+              </div>
+            </div>
+
+            <!-- <div class="main__right__center right__center__question">
+          <div class="main__right__center--point">
+            <table>
+              <tr>
+                <th>High =</th>
+                <td>
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value="25"
+                    name="high"
+                    id="high__point"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Medium =</th>
+                <td>
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value="20"
+                    name="medium"
+                    id="medium__point"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Low =</th>
+                <td>
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value="10"
+                    name="low"
+                    id="low__point"
+                  />
+                </td>
+              </tr>
+            </table>
+            <button id="save__question">Save</button>
+          </div>
+        </div> -->
+          </div>
+        </div>
+        <div class="usersend-modal">
+          <div class="usersend-modal__overlay">
+
+          </div>
+          <div class="usersend-modal__body">
+            <div class="loadingiomodal"></div>
+            <div class="usersend-modal__body-chooose">
+
+            </div>
+            <div class="user-modal__button-send" style="text-align: center;">
+              <button id="user-modal__button-send--question">Send</button>
+              <button id="user-modal__button-cancel--question">Cancel</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="userchoose-modal" style="display: none;">
+          <div class="userchoose-modal__overlay">
+
+          </div>
+          <div class="userchoose-modal__body" style="width: 70%;">
+            <div class="loadingiomodal"></div>
+            <div class="userchoose-modal__body-chooose" style="height: 75%;">
+              <div class="select_indicator">
+                <div style="text-align: center;font-weight: bold;">Indicator</div>
+                <div style="text-align: center;margin-top: 10%;">
+                  <select name="" id="select_indicator_option" style="width: 100%;text-align: center;">
+                    <option value="all" selected>All</option>
+                  </select>
+                </div>
+                <div style="text-align: center;">
+                  <select name="" id="select_facet_option" style="text-align: center;margin-top: 10%;width:100%">
+                    <option value="all" selected>All</option>
+                  </select>
+                </div>
+
+              </div>
+              <div class="big5EnvIndicator_description_list" style="width: 40%;">
+                <div style="text-align: center;font-weight: bold;">Big5IndicatoENV</div>
+                <div
+                  style="text-align: center;font-weight: bold;margin-top: 10%;height: 47%;width: 100%; overflow: auto;border: 1px solid black;"
+                  class="big5EnvIndicator_content_list">
+                </div>
+                <div class="big5EnvIndicator_description" style="text-align: center;margin-top: 2%;">
+                  <span class="big5EnvIndicator_content_keyword"></span>
+                  <span> </span>
+                  <span class="big5EnvIndicator_content_facet"></span>
+                </div>
+                <div style="text-align: center;">
+                  <button id="btn_add_big5envindicator_to_list">Add</button>
+                </div>
+              </div>
+              <div class="select_keyword">
+                <div style="text-align: center;font-weight: bold;">Key words</div>
+                <div style="margin-top: 10%">
+                  <input id="search_keywords" type="text" placeholder="Search keywords....">
+                </div>
+                <div style="margin-top: 5%;">
+                  <select name="" id="select_keyword_option" style="text-align: center;width:100%">
+                    <option value="all" selected>All</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="user-modal__button-choose" style="text-align: center;">
+              <button id="user-modal__button-choose--question">Create</button>
+              <button id="user-modal__button-cancel-choose--question">Cancel</button>
+            </div>
+          </div>
+
+        </div>
+        <div id="toast">
+        </div>
+        <!-- <table>
+            <thead>
+              <tr>
+                  <th><input type="checkbox" /></th>
+                  <th><span>Questions Success</span></th>
+                  <th>Openness</th>
+                  <th>Conciencetious</th>
+                  <th>Extraversion</th>
+                  <th>Agreeable</th>
+                  <th>Neuroticism</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" name="name1" /></td>
+                <td class="question">What's your</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="name2" /></td>
+                <td>What's your nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="name10" /></td>
+                <td>What's your nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="name1" /></td>
+                <td>What's your nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="name1" /></td>
+                <td>What's your nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="name1" /></td>
+                <td>What's your nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="name1" /></td>
+                <td>What's your nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="name1" /></td>
+                <td>What's your nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="name1" /></td>
+                <td>What's your nameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Low</td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+            </tbody>
+          </table> -->
+      </main>
+      <!-- Select user want to send -->
+
+      <!--right of Main-->
+      <!-- <div class="main__right"> -->
+      <!--Top right of Main-->
+      <!-- <div class="main__right__top">
+          <button id="top__btn">
+            <span class="material-icons"> menu </span>
+          </button>
+          <div class="top__profile">
+            <div class="top__profile__user">
+              <span class="material-icons"> notifications_active </span>
+            </div>
+            <div class="top__profile__images">
+              <img src="./assets/images/Ellipse.png" alt="" />
+            </div>
+          </div>
+        </div> -->
+      <!-- Center right of Main-->
+      <!-- <div class="main__right__center right__center__question">
+          <h2>Input Point</h2>
+          <div class="main__right__center--point">
+            <table>
+              <tr>
+                <th>High =</th>
+                <td>
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value="25"
+                    name="high"
+                    id="high__point"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Medium =</th>
+                <td>
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value="20"
+                    name="medium"
+                    id="medium__point"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Low =</th>
+                <td>
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value="10"
+                    name="low"
+                    id="low__point"
+                  />
+                </td>
+              </tr>
+            </table>
+            <button id="save__question">Save</button>
+          </div>
+        </div>
+      </div> -->
+      <%- include("../layouts/script") %>
+        <!-- <script src="/js/question/question.js"></script> -->
+        <script src="/js/question/variables_question.js"></script>
+        <script src="/js/question/variables_input_question.js"></script>
+        <script src="/js/question/variables_add_big5_indicator.js"></script>
+        <script src="/js/question/other_method.js"></script>
+        <script type="module" src="/js/question/on_load_web.js"></script>
+        <!-- <script src="/js/question/trait_option.js"></script> -->
+        <script type="module" src="/js/question/button_choose_big5_indicator.js"></script>
+        <script type="module" src="/js/question/button_send_question.js"></script>
+        <script type="module" src="/js/question/button_send_finally_question.js"></script>
+        <script type="module" src="/js/question/button_save_question.js"></script>
+        <script type="module" src="/js/question/change_level_trait_question.js"></script>
+        <script src="/js/question/table_question/big5_env_indicator_on_click.js"></script>
+        <script type="module" src="/js/question/search_keyword_input.js"></script>
+        <script src="/js/question/add_big5_indicator/delete_big5envindicator_in_list.js""></script>
+        <script src=" https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+  </div>
+</body>
+
+</html>

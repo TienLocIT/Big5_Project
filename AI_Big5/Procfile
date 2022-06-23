@@ -1,0 +1,1 @@
+web: uvicorn post_data:app

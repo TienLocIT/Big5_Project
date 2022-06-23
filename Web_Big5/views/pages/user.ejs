@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styleOther.css" />
+    <link rel="icon" type="image/x-icon" href="/image/logo_green.png">
+    <link rel="stylesheet" href="/css/stylepopupuser.css" />
+    <link
+      rel="stylesheet"
+      href="/fontawesome-free-5.15.4-web/css/all.css"
+    />
+    <!-- Font CSS -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <title>User</title>
+  </head>
+  <body>
+    <div class="container container--user__full">
+      <!--Sidebar-->
+      <%- include("../layouts/sidebar") %> 
+      <!--Left of Main-->
+      <main class="main__left">
+        <% if(dataRender.haveUser==false){ %>
+          <select id="trait__Option" style="width: 14%;text-align: center;margin-left: 5%;">
+            <option selected="selected" value="All">All</option>
+            <option value="Openness">Openness</option>
+            <option value="Conciencetious">Conciencetious</option>
+            <option value="Extraversion">Extraversion</option>
+            <option value="Agreeable">Agreeable</option>
+            <option value="Neuroticism">Neuroticism</option>
+          </select>
+          <div class="tableFixHead" style="margin-top: 1%;">
+            <div id="loadingio"></div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Openness</th>
+                  <th>Conciencetious</th>
+                  <th>Extraversion</th>
+                  <th>Agreeable</th>
+                  <th>Neuroticism</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <script type="module" src="/js/user/user.js"></script>
+        <% } else { %>
+          <div class="tableFixHeadUser">
+            <div class="tableFixHead__content">
+                <div class="tableFixHead__content__left">
+                  <div>
+                    <div class="headerInfo" style="display: flex;justify-content: space-between;flex-wrap: wrap;width: 90%;">
+                        <div class="headerInfo__name">Name:<span><%= dataRender.name %></span></div>
+                        <div class="headerInfo__trait">Trait:<span><%= dataRender.trait %></span></div>
+                        <div class="headerInfo__question">Number Question Answer: <span><%= dataRender.numberQuestionAnswer %>/<%= dataRender.numberQuestion %></span></div>
+                        <div class="headerInfo__phone">Phone Number: <span><%= dataRender.phone %></span></div>
+                  </div>
+                      <form>
+                      <h3>Probing Question:</h3>
+                      <% for(var i=0;i<dataRender.dataprobes.length;i++) { %>
+                          <div class="content__question">
+                              <div style="display: flex;justify-content: space-between;align-items: center;">
+                                <h4>#<%= i+1%>: %> <%= dataRender.dataprobes[i].question %> </h4>
+                                <h4 style="margin-right:0rem ;">Answer:<%= dataRender.dataprobes[i].answer %></h4>
+                              </div>
+                            
+                              <ul>
+                                  <li>O - <span class=content__question--<%= dataRender.dataprobes[i].pointO.trait %>><%= dataRender.dataprobes[i].pointO.trait %> (<%= dataRender.dataprobes[i].pointO.point %>)</span></li>
+                                  <li>C - <span class=content__question--<%= dataRender.dataprobes[i].pointC.trait %>><%= dataRender.dataprobes[i].pointC.trait %> (<%= dataRender.dataprobes[i].pointC.point %>)</span></li>
+                                  <li>E - <span class=content__question--<%= dataRender.dataprobes[i].pointE.trait %>><%= dataRender.dataprobes[i].pointE.trait %> (<%= dataRender.dataprobes[i].pointE.point %>)</span></li>
+                                  <li>A - <span class=content__question--<%= dataRender.dataprobes[i].pointA.trait %>><%= dataRender.dataprobes[i].pointA.trait %> (<%= dataRender.dataprobes[i].pointA.point %>)</span></li>
+                                  <li>N - <span class=content__question--<%= dataRender.dataprobes[i].pointN.trait %>><%= dataRender.dataprobes[i].pointN.trait %> (<%= dataRender.dataprobes[i].pointN.point %>)</span></li>
+                              </ul>
+                          </div>
+                      <% } %>
+                      <ul style="text-align: center;">
+                        <li style="font-weight: bold; font-size: 1.2rem;">Total Point:</li>
+                        <li>Point - <span style="font-weight: bold;">O</span>:<span>(<%= dataRender.pointOProbe %>)</span></li>
+                        <li>Point - <span style="font-weight: bold;">C</span>:<span>(<%= dataRender.pointCProbe %>)</span></li>
+                        <li>Point - <span style="font-weight: bold;">E</span>:<span>(<%= dataRender.pointEProbe %>)</span></li>
+                        <li>Point - <span style="font-weight: bold;">A</span>:<span>(<%= dataRender.pointAProbe %>)</span></li>
+                        <li>Point - <span style="font-weight: bold;">N</span>:<span>(<%= dataRender.pointNProbe %>)</span></li>
+                    </ul> 
+                    <h3>Accuracy Question:</h3>
+                    <% for(var i=0;i<dataRender.dataAccuracys.length;i++) { %>
+                      <div class="content__question">
+                          <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <h4>#<%= i+1%>: %> <%= dataRender.dataAccuracys[i].question %> </h4>
+                            <h4 style="margin-right:0rem ;">Answer:<%= dataRender.dataAccuracys[i].answer %></h4>
+                          </div>
+                          <ul>
+                              <li>O - <span class=content__question--<%= dataRender.dataAccuracys[i].pointO.trait %>><%= dataRender.dataAccuracys[i].pointO.trait %> (<%= dataRender.dataAccuracys[i].pointO.point %>)</span></li>
+                              <li>C - <span class=content__question--<%= dataRender.dataAccuracys[i].pointC.trait %>><%= dataRender.dataAccuracys[i].pointC.trait %> (<%= dataRender.dataAccuracys[i].pointC.point %>)</span></li>
+                              <li>E - <span class=content__question--<%= dataRender.dataAccuracys[i].pointE.trait %>><%= dataRender.dataAccuracys[i].pointE.trait %> (<%= dataRender.dataAccuracys[i].pointE.point %>)</span></li>
+                              <li>A - <span class=content__question--<%= dataRender.dataAccuracys[i].pointA.trait %>><%= dataRender.dataAccuracys[i].pointA.trait %> (<%= dataRender.dataAccuracys[i].pointA.point %>)</span></li>
+                              <li>N - <span class=content__question--<%= dataRender.dataAccuracys[i].pointN.trait %>><%= dataRender.dataAccuracys[i].pointN.trait %> (<%= dataRender.dataAccuracys[i].pointN.point %>)</span></li>
+                          </ul>
+                      </div>
+                    <% } %>
+                    
+                    <ul style="text-align: center;">
+                      <li style="font-weight: bold; font-size: 1.2rem;">Total Point:</li>
+                      <li>Point - <span style="font-weight: bold;">O</span>:<span>(<%= dataRender.pointOAccuracy %>)</span></li>
+                      <li>Point - <span style="font-weight: bold;">C</span>:<span>(<%= dataRender.pointCAccuracy %>)</span></li>
+                      <li>Point - <span style="font-weight: bold;">E</span>:<span>(<%= dataRender.pointEAccuracy %>)</span></li>
+                      <li>Point - <span style="font-weight: bold;">A</span>:<span>(<%= dataRender.pointAAccuracy %>)</span></li>
+                      <li>Point - <span style="font-weight: bold;">N</span>:<span>(<%= dataRender.pointNAccuracy %>)</span></li>
+                  </ul> 
+                  </form>
+                </div>
+                </div>
+            </div>
+          </div>
+          <div style="text-align: center;" class="button--userInfo__back">
+            <button >Back</button>
+          </div>
+          <script type="module" src="/js/user/userInfo.js"></script>
+        <% } %>
+      </main>
+      
+      
+    </div>
+    <%- include("../layouts/script") %> 
+    <div class="address-modal">
+      <div class="address-modal__overlay">
+
+      </div>
+      <div class="address-modal__body">
+        <div class="loadingiomodal"></div>
+        <div class="address__body" style="overflow: auto; height: 75%;">
+
+        </div>
+        <div class="address-modal__button" style="text-align: center;">
+          <button class="address-modal__button-cancel">Cancel</button>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
