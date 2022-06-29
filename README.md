@@ -1,4 +1,4 @@
-## GREEN BIG5 INFORMATION SYSTEM
+﻿## GREEN BIG5 INFORMATION SYSTEM
 ## Hi 👋, We are Green Big5
 
 ## Description
@@ -61,6 +61,14 @@ Open folder containing the source code Questgen.ai
 $ uvicorn post_data:app --reload
 ```
 
+Open folder containing the source code web
+$ npm i
+$ npm start
+
+
+Open folder containing the source code app
+$ flutter run dependencies
+$ flutter run
 ## Note
 The project don't have the database yet.If you want get the project database,let's contact me
 Gmail: `nguyentienloc18122000@gmail.com`
