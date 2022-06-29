@@ -9,6 +9,7 @@ A project about human personality and their relationship to the environment
 - Master Huy, Truong Dinh
 
 ## Team members: 
+- Hau, Bui Phuc
 - Loc, Nguyen Tien
 - [Chung](https://github.com/Cyouisme/), Hoang Bao
 
